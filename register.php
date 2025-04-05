@@ -19,9 +19,23 @@ if (isset($_POST['login_button'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Welcome to BuzzLink!</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="assets/js/register.js"></script>
 </head>
 <body>
+
+<div class="wrapper">
+
+    <div class="login_box">
+
+    <div class="login_header">
+				<h1>BuzzLink!</h1>
+				Login or sign up below!
+		</div>
+
+<div id="first">
 
 <form action="register.php" method="POST">
 
@@ -31,13 +45,17 @@ if (isset($_POST['login_button'])) {
     <br>
     <input type="password" name="log_pass" placeholder="Password" required>
     <br>
+    <?php if (in_array("Email or Password was incorrect<br>", $error_array)) echo "Email or Password was incorrect<br>"; ?>
     <input type="submit" name="login_button" value="Login">
     <br>
     <br>
-    <?php if (in_array("Email or Password was incorrect<br>", $error_array)) echo "Email or Password was incorrect<br>"; ?>
+    <a href="#" id="signup" class="signup">Need and account? Register here!</a>
+
 
 </form>
+</div>
 
+<div id="second">
 
     <form action="register.php" method="post">
         <input type="text" name="reg_fname" placeholder="First Name" value = "<?php if(isset($_SESSION['reg_fname'])) {
@@ -78,13 +96,21 @@ if (isset($_POST['login_button'])) {
         <br>
         <input type="password" name="reg_password2" placeholder="Confirm Password" required>
         <br>
+       
         <input type="submit" name="register_button" value="Register">
         <br>
         <?php
          if(in_array("<span style='color:#14c800;'> You're all set! Go ahead and login!</span> <br>", $error_array)) echo "<span style='color:#14c800;'> You're all set! Go ahead and login!</span> <br>";?>
 
+<br>
+<a href="#" id="signin" class="signin">Already have an account? Sign in here!</a>
 
     </form>
+    </div>
+    </div>
+
+    </div>
+
 
 </body>
 </html>
