@@ -11,9 +11,6 @@ if (isset($_POST['login_button'])) {
     // Store email into session
     $_SESSION['log_email'] = $email;
 
-    // Debugging: Show the email and password (don't do this in production)
-    echo "Email: $email <br>";
-    echo "Raw password: $password <br>";
 
     // Hash password using MD5
     $hashed_password = md5($password);
@@ -44,9 +41,19 @@ if (isset($_POST['login_button'])) {
         $username = $row['username'];
         $db_password = $row['password'];
 
+
         if(password_verify($password, $db_password)) {
         // Store username in session
+
+        $user_closed_query = mysqli_query($con, "SELECT * FROM users WHERE email = '$email' AND user_closed = 'yes'");
+
+
+        if(mysqli_num_rows($user_closed_query) == 1 ) {
+            $reopen_accout = mysqli_query($con, "UPDATE users SET user_closed='no' WHERE email='$email'");
+        }
+        
         $_SESSION['username'] = $username;
+
 
         // Redirect to the homepage after successful login
         header("Location: index.php");
@@ -55,8 +62,10 @@ if (isset($_POST['login_button'])) {
 
 
     } else {
-        echo "Invalid credentials."; // Show an error if credentials don't match
+
+        array_push($error_array, "Email or Password was incorrect<br>");
+    
     }
 }
-
+        
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-echo "file called";
 
 
 $fname = "";
