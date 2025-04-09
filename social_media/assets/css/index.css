@@ -1,0 +1,228 @@
+
+/* Wrapper to contain left sidebar and main feed */
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 20px;
+    padding: 20px;
+    min-height: 500px; /* Ensures wrapper has enough height */
+    width: 100%; /* Ensure the wrapper spans full width of the screen */
+}
+
+/* Left Sidebar (User Profile) */
+.left_sidebar {
+    width: 25%; /* Adjust the width of the left sidebar */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Full height for sidebar */
+}
+
+/* Profile Image Styling */
+.user_details img {
+    width: 120px; /* Image size */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px; /* Adjust spacing between image and username */
+    border: 3px solid #4a90e2; /* Border around the image */
+    transition: transform 0.3s ease;
+}
+
+.user_details img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* User Profile Link (Username under the image) */
+.user_details a {
+    color: #4a90e2; /* Primary blue */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-top: 10px; /* Space between image and username */
+    display: block;
+}
+
+
+
+/* Hover effect on username */
+.user_details a:hover {
+    color: #357abd; /* Hover color */
+}
+
+/* Main Feed Section */
+.main_feed {
+    width: 70%; /* Adjust the width of the main feed */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20px; /* Space between the sidebar and the feed */
+    height: 100%; /* Full height for the feed */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns content at the top */
+}
+
+/* Feed Content */
+.feed_content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px; /* Space between paragraphs */
+}
+
+/* Left Sidebar (User Profile) */
+.left_sidebar {
+    width: 25%; /* Adjust the width of the left sidebar */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user_details {
+    display: flex;
+    align-items: center; /* Align the image and the content on the same line */
+    justify-content: flex-start;
+}
+
+.user_details img {
+    width: 120px; /* Smaller image size */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px; /* Add space between image and text */
+    border: 3px solid #4a90e2; /* Add a border around the image */
+    transition: transform 0.3s ease;
+}
+
+.user_details img:hover {
+    transform: scale(1.05);
+}
+
+/* Right side content (name, posts, likes) */
+.user_details_right {
+    text-align: left;
+}
+
+/* Username styling */
+.profile_name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px; /* Add space between the name and stats */
+    transition: color 0.3s ease;
+}
+
+.profile_name:hover {
+    color: #4a90e2; /* Change to primary blue color on hover */
+}
+
+/* Stats styling (posts and likes) */
+.user_stats {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.user_stats br {
+    margin-bottom: 5px;
+}
+
+
+/* Form Container */
+.post_form {
+    background-color: #f7f9fc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Textarea */
+.post_form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px solid #d3e0ea;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    resize: vertical;
+    font-family: 'Segoe UI', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.post_form textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+    outline: none;
+}
+
+/* Submit Button */
+.post_form input[type="submit"] {
+    margin-top: 15px;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    border: none;
+    padding: 12px 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.post_form input[type="submit"]:hover {
+    background: linear-gradient(135deg, #357abd, #4a90e2);
+    transform: translateY(-2px);
+}
+
+/* Horizontal rule style */
+.post_form hr {
+    border: none;
+    border-top: 1px solid #d3e0ea;
+    margin-top: 25px;
+}
+
+
+
+
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Stack the elements vertically on mobile */
+        padding: 10px; /* Reduced padding on mobile */
+        margin: 0px;
+    }
+
+    .left_sidebar {
+        width: 100%; /* Full width for the sidebar on small screens */
+        margin-bottom: 20px; /* Space between sidebar and feed */
+    }
+
+    .main_feed {
+        width: 100%; /* Full width for the main feed on small screens */
+        margin-left: 0px;
+    }
+
+    .user_details img {
+        width: 100px; /* Adjust image size on mobile */
+        height: 100px;
+    }
+
+    .user_details a {
+        font-size: 16px; /* Smaller font size for mobile */
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 
-echo 'called'; // Debugging: Check if the script is being called
+
 
 if (isset($_POST['login_button'])) {
 
@@ -18,9 +18,6 @@ if (isset($_POST['login_button'])) {
     // Formulate the query
     $query = "SELECT * FROM users WHERE email = '$email'";
 
-    // Debugging: Show the SQL query being executed
-    echo "SQL Query: $query <br>";
-
     // Check if the query is successful
     $check_database_query = mysqli_query($con, $query);
 
@@ -31,9 +28,7 @@ if (isset($_POST['login_button'])) {
 
     // Check if there is exactly one matching record
     $check_login_query = mysqli_num_rows($check_database_query);
-
-    // Debugging: Show how many matching rows there are
-    echo "Matching rows: $check_login_query <br>";
+    
 
     if ($check_login_query === 1) {
         // Fetch the user data if the login is successful
@@ -49,7 +44,7 @@ if (isset($_POST['login_button'])) {
 
 
         if(mysqli_num_rows($user_closed_query) == 1 ) {
-            $reopen_accout = mysqli_query($con, "UPDATE users SET user_closed='no' WHERE email='$email'");
+            $reopen_account = mysqli_query($con, "UPDATE users SET user_closed='no' WHERE email='$email'");
         }
         
         $_SESSION['username'] = $username;

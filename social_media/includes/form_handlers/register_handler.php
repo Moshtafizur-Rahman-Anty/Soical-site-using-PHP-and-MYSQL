@@ -82,12 +82,12 @@ if (isset($_POST["register_button"])) {
     }
 
     if($password != $password2) {
-        array_push($error_array, "Your PassWords don't match<br>");
+        array_push($error_array, "Your Passwords don't match<br>");
     }
 
     else {
         if (preg_match('/[^A-Za-z0-9]/', $password)) {
-            array_push($error_array, "Your passwprd can only contain english charecter or numbers<br>");
+            array_push($error_array, "Your password can only contain english charecter or numbers<br>");
         }
     }
 
@@ -97,11 +97,11 @@ if (isset($_POST["register_button"])) {
     
     if(empty($error_array)) {
 
-        $password = password_hash($password, PASSWORD_BCRYPT);
 
     //Genrate username by concatenating
 
     $username = strtolower($fname . "_" . $lname);
+
     $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username = '$username'");
 
     $i = 0;
@@ -113,19 +113,9 @@ if (isset($_POST["register_button"])) {
     }
     
 
-    //Profile Picture assignment
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $rand = rand(1, 2); //random number between 1 and 2
-
-    if($rand == 1) {
-
-    $profile_pic = "assests/images/profile_pics/defaults/head_deep_blue.png";
-    }
-
-    else if ($rand == 2)  {
-        $profile_pic = "assests/images/profile_pics/defaults/head_deep_blue.png";
-
-    }
+    
 
     $query = mysqli_query($con, "INSERT INTO users (first_name, last_name, email, password, signup_date, profile_pic, num_posts, num_likes, user_closed, friend_array, username) 
     VALUES ('$fname', '$lname', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',', '$username')");
